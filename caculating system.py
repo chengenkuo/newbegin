@@ -1,4 +1,5 @@
 def checkout():
+    #先提供各品項價格
     coke=25
     milktea=20
     blacktea=30
@@ -14,6 +15,7 @@ def checkout():
     total=0      
     from sys import exit
     while True:
+        #利用while迴圈輸入不同品項時輸入購買數量並計算總價
         choose=input("選擇購買的品項:1.可樂 2.奶茶 3.紅茶 4.結帳")
         if (choose=="1"):
             coke_amnt=input("輸入購買數量:")
@@ -27,7 +29,8 @@ def checkout():
             blacktea_amnt=input("輸入購買數量:")
             total+=blacktea*int(blacktea_amnt)
             print("總共",total,"元")
-        elif(choose=="4"):
+        elif(choose=="4"): #選到選項4時詢問要加購商品
+            #利用while迴圈輸入不同加購品項及數量
             while True:
                 add_choice=input("是否加購以下商品A.口香糖 B.肉乾 C.茶葉蛋 D.謝謝不用")
                 if (add_choice=="A"):
@@ -43,6 +46,7 @@ def checkout():
                     total+=egg*int(egg_amnt)
                     print("一共是",total,"元")
                 else:
+                    #若不選擇加購,則選擇D,計算總價跳出迴圈
                     print("總共是",total,"元")
                     exit()
 
