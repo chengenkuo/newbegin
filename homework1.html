@@ -1,0 +1,56 @@
+<html>
+<head>
+	<title>作品一</title>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+</head>
+<body>
+<table border=1>
+	<tr>
+		<td>車牌號碼</td>
+		<td>時間</td>
+		<td>地點</td>
+	</tr>
+	<tbody id="row">
+	
+	</tbody>
+</table>
+
+</body>
+<script>
+$(document).ready(function(){
+	$.ajax({
+	url:'https://api.kcg.gov.tw/api/service/Get/aaf4ce4b-4ca8-43de-bfaf-6dc97e89cac0',
+	type:"get",
+	dataType:"json",
+	success:function(info){
+		console.log(info.data.length);
+		total_len=info.data.length;
+
+		for(i=0;i<total_len;i++){
+		
+		$('#row').append(
+			"<tr>"+
+			"<td>"+info.data[i].car+"</td>"+
+			"<td>"+info.data[i].time+"</td>"+
+			"<td>"+info.data[i].location+"</td>"+
+			"</tr>"
+			);
+		}
+		console.log(info.data[0].car);
+	},
+	error:function(error){
+		console.log("請求失敗"+error);
+	}
+
+	});
+
+});
+</script>
+</html>
+
+	
+
+
+
+
+
